@@ -1,0 +1,6 @@
+{
+  "name": "صيانتي – Siyanti",
+  "description": "مستشار الصيانة الذكي في موريتانيا – فحص الأعطال بالصورة والصوت والنص ومعرفة السعر العادل في السوق الموريتاني.",
+  "requestFramePermissions": ["microphone", "camera"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

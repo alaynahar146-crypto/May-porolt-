@@ -1,0 +1,47 @@
+[
+  {
+    "id": "voice-easy",
+    "presetKey": "voice-easy",
+    "title": "الفيديو 3 · الفحص بالصوت فقط (للجميع)",
+    "description": "موجه لجميع الفئات وفي المدن والبوادي: يوضح أن التحدث بالصوت أو تسجيل صوت الجهاز يكفي بدون كتابة.",
+    "tiktokCaption": "ما تحتاج تكتب حرف! تكلّم بصوتك فقط أو صوّر العطل وصلاح لي يشرح لك الحل والسعر 🎙️📱🇲🇷\nافتح الرابط في Chrome واضغط تثبيت 👇\n#موريتانيا #الحسانية #صلاح_لي #صيانة #تكنولوجيا",
+    "durationSec": 35,
+    "resolution": "1080x1920",
+    "videoFile": "voice-easy.mp4",
+    "audioFile": "voice-easy.wav",
+    "posterFile": "voice-easy.jpg",
+    "videoSizeBytes": 1372866,
+    "audioSizeBytes": 6246402,
+    "createdAt": 1795249733403
+  },
+  {
+    "id": "fair-price",
+    "presetKey": "fair-price",
+    "title": "الفيديو 2 · كشف المبالغة والسعر العادل",
+    "description": "سيناريو جذاب يبدأ بموقف مبالغة في السعر ثم يعرض أداة مراجعة تسعيرة الفني داخل صلاح لي وطريقة التثبيت.",
+    "tiktokCaption": "قال لي 15,000 قديمة… لكن تطبيق صلاح لي كشف السعر العادل في السوق الموريتاني! 💰🔧\nافتح الرابط في متصفح Chrome واضغط تثبيت التطبيق الآن 👇\n#موريتانيا #صلاح_لي #نواكشوط #نواذيبو #نصائح_صيانة",
+    "durationSec": 32,
+    "resolution": "1080x1920",
+    "videoFile": "fair-price.mp4",
+    "audioFile": "fair-price.wav",
+    "posterFile": "fair-price.jpg",
+    "videoSizeBytes": 1319483,
+    "audioSizeBytes": 5717202,
+    "createdAt": 1795249688136
+  },
+  {
+    "id": "install-guide",
+    "presetKey": "install-guide",
+    "title": "الفيديو 1 · التثبيت والاستخدام الشامل (مثبّت)",
+    "description": "يشرح فكرة صلاح لي من الصفر بوضوح تام، ثم يوضح خطوة بخطوة كيفية الفتح في Chrome وتثبيت التطبيق في 5 ثوانٍ.",
+    "tiktokCaption": "قبل ما تدفع أوقية واحدة في الصيانة، افحص العطل واعرف السعر العادل مع صلاح لي! 🔧🇲🇷\nللتثبيت المباشر: افتح الرابط في البايو ← اضغط (⋮) ← الفتح في Chrome ← تثبيت التطبيق 📲\n#صلاح_لي #موريتانيا #نواكشوط #صيانة #تطبيقات",
+    "durationSec": 42,
+    "resolution": "1080x1920",
+    "videoFile": "install-guide.mp4",
+    "audioFile": "install-guide.wav",
+    "posterFile": "install-guide.jpg",
+    "videoSizeBytes": 1727495,
+    "audioSizeBytes": 7366542,
+    "createdAt": 1795249644775
+  }
+]

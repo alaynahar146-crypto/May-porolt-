@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0F172A">
+<title>صيانتي – Siyanti</title>
+<link rel="manifest" href="manifest.json">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#0F172A;--org:#F97316;--bg:#EEF2F7;--card:#fff;--ink:#0F172A;--mut:#64748B;--line:#E2E8F0;--ok:#16A34A;--bad:#DC2626;--warn:#D97706;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);color-scheme:light}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0B1220;--card:#162033;--ink:#F1F5F9;--mut:#94A3B8;--line:#26334A;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0B1220;--card:#162033;--ink:#F1F5F9;--mut:#94A3B8;--line:#26334A;color-scheme:dark}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:Cairo,"Segoe UI",Tahoma,Arial,sans-serif;line-height:1.7;padding-bottom:calc(76px + env(safe-area-inset-bottom,0px))}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--navy);z-index:30}
+.app{max-width:520px;margin:0 auto}
+.top{background:var(--navy);color:#fff;padding:14px 16px 18px;border-radius:0 0 22px 22px}
+.logo{font-size:24px;font-weight:800}.logo small{font-size:13px;color:#94A3B8;font-weight:600;margin-inline-start:6px}
+.pill{display:inline-block;margin-top:8px;background:rgba(249,115,22,.18);color:#FDBA74;border:1px solid rgba(249,115,22,.5);border-radius:99px;padding:2px 12px;font-size:14px;font-weight:700}
+main{padding:14px}
+h2{font-size:18px;margin:16px 0 8px}
+.cats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.cat{background:var(--card);border:2px solid var(--line);border-radius:16px;padding:12px 4px;text-align:center;font:inherit;font-weight:700;font-size:13px;color:var(--ink);cursor:pointer}
+.cat span{display:block;font-size:30px;line-height:1.2}
+.cat.on{border-color:var(--org);background:rgba(249,115,22,.1)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:14px;margin-bottom:12px}
+.card h3{margin:0 0 6px;font-size:16px}
+textarea{width:100%;min-height:96px;font:inherit;color:var(--ink);background:var(--bg);border:1.5px solid var(--line);border-radius:14px;padding:12px;resize:vertical}
+input.code{width:100%;font:inherit;color:var(--ink);background:var(--bg);border:1.5px solid var(--line);border-radius:12px;padding:12px;direction:ltr;text-align:center;letter-spacing:1px}
+.row{display:flex;gap:8px;flex-wrap:wrap}
+.btn{border:0;border-radius:14px;font:inherit;font-weight:800;padding:12px 16px;cursor:pointer;background:var(--org);color:#fff}
+.btn.big{width:100%;font-size:18px;padding:15px;margin-top:6px}
+.btn.sec{background:var(--bg);color:var(--ink);border:1.5px solid var(--line)}
+.btn.wa{background:#16A34A;width:100%;margin-top:8px}
+.btn.s{padding:8px 12px;font-size:14px}
+.row .btn{flex:1}
+.prev{position:relative;margin-top:10px}
+.prev img{width:100%;max-height:220px;object-fit:cover;border-radius:14px;display:block}
+.x{position:absolute;top:8px;inset-inline-start:8px;background:rgba(0,0,0,.65);color:#fff;border:0;border-radius:99px;width:30px;height:30px;font-size:16px;cursor:pointer}
+.lock{opacity:.85}
+canvas{width:100%;height:56px;background:var(--bg);border-radius:12px;margin-top:8px}
+.badge{display:inline-block;border-radius:99px;padding:2px 12px;font-weight:800;font-size:14px;color:#fff}
+.b-منخفض{background:var(--ok)}.b-متوسط{background:var(--warn)}.b-مرتفع{background:var(--bad)}
+.sim{background:rgba(217,119,6,.15);color:var(--warn);border-radius:12px;padding:8px 12px;font-size:13px;font-weight:700;margin-bottom:12px}
+ol,ul{padding-inline-start:22px;margin:6px 0}
+.money{display:flex;justify-content:space-between;gap:8px;border-bottom:1px dashed var(--line);padding:6px 0}
+.money small{display:block;color:var(--mut)}
+.phrase{background:var(--bg);border-radius:12px;padding:10px;border-inline-start:4px solid var(--org)}
+.blur{filter:blur(5px);user-select:none}
+.plan{position:relative}.plan.best{border:2px solid var(--org)}.plan.sel{box-shadow:0 0 0 3px rgba(249,115,22,.35)}
+.tag{position:absolute;top:-11px;inset-inline-end:14px;background:var(--org);color:#fff;border-radius:99px;padding:1px 12px;font-size:12px;font-weight:800}
+.price{font-size:26px;font-weight:800;color:var(--org)}.price small{font-size:13px;color:var(--mut);font-weight:600}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0}.chips span{background:var(--bg);border:1px solid var(--line);border-radius:99px;padding:3px 12px;font-weight:700;font-size:14px}
+.num{background:var(--bg);border:2px dashed var(--org);border-radius:12px;padding:10px;text-align:center;font-size:20px;font-weight:800;direction:ltr;letter-spacing:1px}
+.h{display:flex;justify-content:space-between;align-items:center;gap:8px}
+.hi{cursor:pointer}.hi p{margin:2px 0;color:var(--mut);font-size:14px}
+.nav{position:fixed;bottom:0;inset-inline:0;background:var(--card);border-top:1px solid var(--line);display:flex;justify-content:center;padding-bottom:env(safe-area-inset-bottom,0px);z-index:20}
+.nav button{flex:1;max-width:174px;border:0;background:none;color:var(--mut);font:inherit;font-weight:700;font-size:13px;padding:8px 0;cursor:pointer}
+.nav button b{display:block;font-size:22px;line-height:1.3}.nav button.on{color:var(--org)}
+.ov{position:fixed;inset:0;background:var(--navy);color:#fff;z-index:50;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:28px;gap:14px}
+.ov .big{font-size:64px}.ov h1{margin:0;font-size:30px}.ov p{margin:0;color:#CBD5E1;max-width:340px}
+.spin{width:54px;height:54px;border:6px solid rgba(255,255,255,.2);border-top-color:var(--org);border-radius:50%;animation:sp 1s linear infinite}@keyframes sp{to{transform:rotate(360deg)}}
+#toast{position:fixed;bottom:calc(90px + env(safe-area-inset-bottom,0px));inset-inline:16px;margin:auto;max-width:420px;background:#0F172A;color:#fff;border-radius:14px;padding:10px 14px;text-align:center;font-weight:700;z-index:60;display:none}
+[hidden]{display:none!important}
+.hero{background:linear-gradient(135deg,#0F172A,#1E293B);color:#fff;border-radius:20px;padding:18px;margin-bottom:12px;border:1px solid rgba(249,115,22,.4)}.hero h2{margin:0 0 4px;color:#fff;font-size:19px}.hero p{margin:0;color:#CBD5E1;font-size:14px}
+.plan{cursor:pointer;padding:18px 16px 16px;margin-top:16px}.plan .tag{top:-12px}
+.ph{display:flex;gap:10px;align-items:center}.ph .ic{font-size:32px}.ph h3{margin:0}.ph small{color:var(--mut)}
+.per{color:var(--mut);font-size:13px;margin:0 0 8px}
+.ft{list-style:none;padding:0;margin:8px 0 12px}.ft li{padding:3px 0;font-size:14px;font-weight:600}.ft .y{color:var(--ok)}.ft .n{color:var(--mut);text-decoration:line-through;opacity:.65;font-weight:400}
+.save{background:rgba(249,115,22,.15);color:#C2410C;border-radius:10px;padding:6px 10px;font-size:13px;font-weight:700;margin-bottom:8px}
+.plan.best{background:linear-gradient(160deg,#0F172A,#1E293B);color:#fff;border:2px solid var(--org)}.plan.best h3{color:#fff}.plan.best small,.plan.best .per{color:#CBD5E1}.plan.best .save{color:#FDBA74}.plan.best .ft .y{color:#86EFAC}
+.steps{counter-reset:s;list-style:none;padding:0;margin:6px 0}.steps li{counter-increment:s;display:flex;gap:10px;align-items:center;padding:5px 0}.steps li::before{content:counter(s);background:var(--org);color:#fff;border-radius:50%;min-width:26px;height:26px;display:grid;place-items:center;font-weight:800;font-size:14px}
+</style>
+</head>
+<body>
+<div class="app">
+<header class="top"><div class="logo">🔧 صيانتي<small>Siyanti</small></div><span class="pill" id="pill"></span></header>
+<main>
+<section id="v-home">
+ <h2>ما نوع العطل؟</h2><div class="cats" id="cats"></div>
+ <h2>صف المشكلة</h2>
+ <div class="card">
+  <textarea id="desc" maxlength="1500" placeholder="مثال: المكيف يشتغل لكن ما يبرّد ويقطّر ماء..."></textarea>
+  <div class="row" style="margin-top:10px">
+   <button class="btn sec" id="bCam">📷 الكاميرا</button><button class="btn sec" id="bGal">🖼️ المعرض</button><button class="btn sec" id="bRec">🎙️ صوت <span id="lk">🔒</span></button>
+  </div>
+  <input type="file" id="fCam" accept="image/*" capture="environment" hidden><input type="file" id="fGal" accept="image/*" hidden>
+  <div class="prev" id="prev" hidden><img id="pimg" alt="صورة العطل"><button class="x" id="xImg" aria-label="حذف الصورة">✕</button></div>
+  <div id="recBox" hidden><canvas id="wave" width="480" height="56"></canvas>
+   <div class="h" style="margin-top:6px"><b id="rt">00:00</b><button class="btn s" id="stopRec">⏹ إيقاف</button></div></div>
+  <div id="audBox" hidden><audio id="aud" controls style="width:100%;margin-top:8px"></audio><button class="btn sec s" id="xAud" style="margin-top:6px">حذف التسجيل</button></div>
+ </div>
+ <button class="btn big" id="go">🔍 افحص العطل بالذكاء الاصطناعي</button>
+ <p style="color:var(--mut);font-size:13px;text-align:center">بدون تسجيل وبدون أي بيانات شخصية · التقديرات إرشادية</p>
+</section>
+<section id="v-result" hidden></section>
+<section id="v-hist" hidden></section>
+<section id="v-plans" hidden></section>
+</main>
+<nav class="nav"><button data-t="home" class="on"><b>🏠</b>الرئيسية</button><button data-t="hist"><b>🗂️</b>سجل الأعطال</button><button data-t="plans"><b>💎</b>الباقات</button></nav>
+</div>
+<div class="ov" id="welcome" hidden><div class="big">🔧</div><h1>صيانتي</h1><p>صوّر العطل أو صفه، فيشرح لك الذكاء الاصطناعي سببه والسعر العادل في موريتانيا، وماذا تقول للفني حتى لا تُستغل.</p><p>جرّب 3 فحوصات مجاناً بدون أي تسجيل.</p><button class="btn big" id="start" style="max-width:340px">ابدأ الفحص مجاناً</button></div>
+<div class="ov" id="loader" hidden><div class="spin"></div><p id="lmsg" style="font-size:18px;font-weight:700;color:#fff"></p></div>
+<div id="toast" role="status"></div>
+<script type="module">
+// ===== aiService.js – خدمة الاتصال بـ Google Gemini =====
+// ضع المفتاح في ملف .env باسم VITE_GEMINI_API_KEY (مشاريع Vite). بدون مفتاح يعمل وضع المحاكاة تلقائياً.
+// تحذير: أي مفتاح داخل صفحة ويب يراه كل من يفتح الكود. للنشر الحقيقي مرّر الطلب عبر خادم وسيط (Worker).
+const GEMINI_API_KEY = (import.meta.env && import.meta.env.VITE_GEMINI_API_KEY) || "";
+const MODEL = "gemini-1.5-flash"; // إن أُوقف النموذج استبدله باسم النموذج الحالي من Google AI Studio
+const SYSTEM_PROMPT = `أنت خبير صيانة وميكانيكا وكهرباء محترف ومستشار أمين للمواطنين في موريتانيا (نواكشوط ونواذيبو وبقية المدن). مهمتك تحليل وصف العطل أو الصورة المقدمة من المستخدم وتقديم الإجابة بصيغة JSON منظمة تحتوي على:
+1. diagnosis: شرح سبب العطل بلغة عربية بسيطة جداً ومباشرة يفهمها المواطن العادي.
+2. diy_steps: قائمة بخطوات بسيطة يمكن للمستخدم تجربتها بنفسه بأمان قبل استدعاء فني.
+3. parts_cost_mru: السعر التقريبي لقطع الغيار في السوق الموريتاني بالأوقية الجديدة وما يعادلها بالقديمة.
+4. labor_cost_mru: أجرة اليد العاملة العادلة للفني في موريتانيا بالأوقية الجديدة وما يعادلها بالقديمة.
+5. technician_phrase: جملة تقنية دقيقة ومختصرة يقولها المستخدم للفني ليشعره أنه فاهم للعطل ولا يقبل المبالغة في السعر.
+6. pro_advice: نصيحة احترافية عميقة حول جودة قطع الغيار وكيفية منع تكرار العطل مستقبلاً (تظهر لمشتركي الباقة الاحترافية والسنوية).
+7. danger_level: مستوى الخطورة (منخفض، متوسط، مرتفع - يتطلب فني فوراً).
+تنسيق الأرقام: parts_cost_mru و labor_cost_mru كل منهما كائن {"min":رقم,"max":رقم} بالأوقية الجديدة فقط (والتطبيق يحسب القديمة). diy_steps مصفوفة نصوص. danger_level إحدى القيم: منخفض أو متوسط أو مرتفع. لا تخترع تشخيصاً قاطعاً إن كانت المعلومات غير كافية، بل اذكر الاحتمالات الأرجح واطلب فحصاً مباشراً. نبّه إلى السلامة عند الكهرباء والغاز والحريق. أعد JSON فقط بلا أي نص خارجه.`;
+
+const DB = {
+ ac:{d:"غالباً نقص غاز التبريد أو اتساخ الفلاتر والمبخر، وهذا يضعف التبريد وقد يسبب تجمد الأنبوب أو تقطير الماء.",s:["أطفئ المكيف 30 دقيقة ثم أعد تشغيله","نظّف الفلاتر بالماء والصابون وجفّفها جيداً","تأكد من بطاريات الريموت وضبط الحرارة على 22","افحص مجرى الصرف وأزل ما يسده","لا تفتح الوحدة الداخلية بنفسك"],p:[150,700],l:[100,300],t:"المكيف يعمل لكن التبريد ضعيف. أريد قياس ضغط الغاز وكشف التسرب وفحص المبخر والمكثف قبل أي تعبئة، وأريد السعر مفصلاً.",a:"اطلب غاز أصلياً بعبوة مختومة ولا تقبل تعبئة دون كشف تسرب. نظّف الفلاتر كل شهرين في الغبار والرمال، ونظّف المكثف الخارجي كل ستة أشهر، وركّب حماية للجهد الكهربائي.",g:"متوسط"},
+ car:{d:"غالباً ضعف في البطارية أو في الدينامو، أو أقطاب بطارية متسخة ووصلات رخوة تمنع وصول الكهرباء للمحرك.",s:["افحص أقطاب البطارية ونظّفها من الأكسدة وشدّ الوصلات","افصل الإضاءة والمكيف والراديو وحاول التشغيل","افحص مستوى الزيت وماء التبريد","اطلب فحصاً بجهاز الكمبيوتر لقراءة الأكواد"],p:[300,1500],l:[100,400],t:"السيارة تتأخر في التشغيل وأشك في البطارية أو الدينامو. أريد اختبار جهد البطارية والشحن قبل تغيير أي قطعة.",a:"اشترِ بطارية بتاريخ إنتاج حديث وبضمان مكتوب، وتجنب القطع المستعملة المجهولة. افحص الشحن كل 6 أشهر، ولا تترك الأجهزة تعمل والمحرك مطفأ، وقلّل الغبار حول الأقطاب.",g:"متوسط"},
+ elec:{d:"غالباً قاطع كهربائي متعب أو توصيلة رخوة، أو تسرب بسيط في وصلة أنبوب أو محبس قديم.",s:["اقطع الكهرباء من القاطع الرئيسي قبل أي فحص","أغلق محبس الماء الرئيسي عند وجود تسرب","لا تلمس أسلاكاً مكشوفة ولا تلمس الكهرباء بيد مبللة","شدّ الوصلات الخارجية المرئية وجرّب أداة بديلة"],p:[50,300],l:[100,300],t:"أشك في توصيلة رخوة أو قاطع معطوب. أريد قياس الجهد وفحص التوصيلات وتحديد نقطة العطل قبل تغيير القطع.",a:"استعمل أسلاكاً ومفاتيح بمواصفات سليمة وبمقطع مناسب للحِمل، وركّب قاطع حماية تسريب أرضي. تجنب الوصلات المتعددة المتراكمة وراجع التوصيلات سنوياً.",g:"مرتفع"},
+ appl:{d:"غالباً مشكلة في الحساس أو الثرموستات أو المضخة، وأحياناً يكون السبب فلتراً مسدوداً أو توصيلة كهرباء ضعيفة.",s:["افصل الجهاز 5 دقائق ثم أعد تشغيله","نظّف الفلتر أو مجرى التصريف","جرّب مقبساً آخر وتأكد من سلامة الكابل","لا تفتح الجهاز وهو موصول بالكهرباء"],p:[100,600],l:[100,250],t:"الجهاز لا يعمل كما يجب. أريد فحص الحساس والثرموستات والمضخة وتحديد القطعة المعطوبة قبل أي تغيير.",a:"استعمل منظم جهد، وابتعد بالجهاز عن الحرارة والرطوبة، ونظّف الفلاتر دورياً، واشترِ قطعاً أصلية بضمان مكتوب.",g:"منخفض"},
+ phone:{d:"غالباً بطارية متهالكة أو منفذ شحن متسخ، وأحياناً تكون الذاكرة ممتلئة أو تحديث متعثر.",s:["نظّف منفذ الشحن بعود خشبي رفيع بلطف","جرّب شاحناً وكابلاً آخرين سليمين","أعد تشغيل الهاتف وفرّغ مساحة التخزين","حدّث النظام وأزل التطبيقات المشبوهة"],p:[100,500],l:[50,150],t:"الهاتف يشحن ببطء أو ينطفئ فجأة. أريد اختبار صحة البطارية ومنفذ الشحن قبل استبدال أي قطعة.",a:"اشترِ بطارية وشاحناً بجودة موثوقة بدل الشواحن الرخيصة، وتجنب الشحن في الحرارة العالية، وأبقِ الشحن بين 20% و80% قدر الإمكان.",g:"منخفض"}};
+const RISK=/دخان|شرر|حرق|احتراق|ماس|صعق|غاز|تسرب/;
+function norm(r,sim){const rg=o=>{const a=Math.max(0,Math.round(+(o&&o.min)||0));return{min:a,max:Math.max(a,Math.round(+(o&&o.max)||0))}};const dg=String(r.danger_level||"");
+ return{diagnosis:String(r.diagnosis||"").slice(0,1500),diy_steps:(Array.isArray(r.diy_steps)?r.diy_steps:[]).map(String).slice(0,8),parts_cost_mru:rg(r.parts_cost_mru),labor_cost_mru:rg(r.labor_cost_mru),technician_phrase:String(r.technician_phrase||"").slice(0,600),pro_advice:String(r.pro_advice||"").slice(0,1500),danger_level:dg.includes("مرتفع")?"مرتفع":dg.includes("منخفض")?"منخفض":"متوسط",simulated:!!sim}}
+function simulate(cat,text){const x=DB[cat]||DB.appl;const risky=RISK.test(text||"");
+ return norm({diagnosis:x.d+(risky?" وصفك يتضمن مؤشرات خطر (دخان أو شرر أو رائحة حرق أو غاز) فتوقف عن الاستعمال فوراً.":""),diy_steps:risky?["افصل الجهاز عن الكهرباء أو أغلق الغاز فوراً وأبعد الناس","افتح النوافذ ولا تشغّل أي مفتاح كهرباء","اتصل بفني مختص قبل أي محاولة"].concat(x.s.slice(0,1)):x.s,parts_cost_mru:{min:x.p[0],max:x.p[1]},labor_cost_mru:{min:x.l[0],max:x.l[1]},technician_phrase:x.t,pro_advice:x.a,danger_level:risky?"مرتفع":x.g},true)}
+async function diagnose({cat,catName,text,image,audio}){
+ if(!GEMINI_API_KEY)return simulate(cat,text);
+ try{
+  const parts=[{text:"الفئة: "+catName+"\nوصف المستخدم: "+(text||"(لا يوجد وصف نصي)")}];
+  if(image)parts.push({inlineData:{mimeType:image.mime,data:image.data}});
+  if(audio)parts.push({inlineData:{mimeType:audio.mime,data:audio.data}});
+  const r=await fetch("https://generativelanguage.googleapis.com/v1beta/models/"+MODEL+":generateContent",{method:"POST",headers:{"content-type":"application/json","x-goog-api-key":GEMINI_API_KEY},
+   body:JSON.stringify({systemInstruction:{parts:[{text:SYSTEM_PROMPT}]},contents:[{role:"user",parts}],generationConfig:{responseMimeType:"application/json",temperature:0.4}})});
+  if(!r.ok)throw new Error("HTTP "+r.status);
+  const j=await r.json();const raw=(j.candidates&&j.candidates[0]&&j.candidates[0].content.parts||[]).map(p=>p.text||"").join("").replace(/```json|```/g,"").trim();
+  const o=JSON.parse(raw);if(!o.diagnosis)throw new Error("empty");
+  return norm(o,false);
+ }catch(e){return simulate(cat,text)}
+}
+
+// ===== app =====
+const PAY_NUMBER="222XXXXXXXX", WA_NUMBER="222XXXXXXXX", FREE=3, LS="siyanti_v1";
+const CATS=[{id:"ac",n:"تكييف وتبريد",i:"❄️"},{id:"car",n:"سيارات",i:"🚗"},{id:"elec",n:"كهرباء وسباكة",i:"🔌"},{id:"appl",n:"أجهزة منزلية",i:"🧺"},{id:"phone",n:"هواتف",i:"📱"}];
+const FEATS=["تشخيص بالنص والصورة","فحوصات غير محدودة","تشخيص فائق الدقة بالصوت","الفحص العميق وتنبيهات الوقاية","أولوية التحليل السريع"];
+const PLANS=[
+ {id:"free",n:"المجانية – للتجربة",p:0},
+ {id:"basic",n:"الأساسية الشهرية",p:100,days:30,ic:"🛠️",sub:"اعرف السعر العادل قبل أن تدفع للفني",per:"≈ 3 أوقيات في اليوم · 30 يوماً",m:[1,1,0,0,0]},
+ {id:"pro",n:"الاحترافية المتقدمة",p:200,days:30,ic:"⚡",sub:"صوت وصورة، ووقاية من تكرار العطل",per:"≈ 7 أوقيات في اليوم · 30 يوماً",m:[1,1,1,1,1],pop:"الأكثر طلباً"},
+ {id:"year",n:"السنوية الشاملة",p:300,days:365,ic:"👑",sub:"كل ميزات الاحترافية طوال سنة كاملة",per:"أقل من أوقية واحدة في اليوم · 365 يوماً",m:[1,1,1,1,1],best:true,pop:"العرض الأقوى ⭐",save:"تدفع 300 فقط بدل 2,400 أوقية لو جددت الاحترافية كل شهر لمدة سنة"}];
+const CODES={BASIC100:"basic",PRO200:"pro",YEAR300:"year"};
+const MSGS=["جاري تحليل العطل ومقارنة أسعار قطع الغيار في موريتانيا...","نراجع الأسباب المحتملة للعطل...","نجهّز لك الجملة المناسبة للفني..."];
+const $=id=>document.getElementById(id);
+const esc=s=>String(s==null?"":s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const sleep=ms=>new Promise(r=>setTimeout(r,ms));
+const fmt=n=>Number(n).toLocaleString("en");
+const catOf=id=>CATS.find(c=>c.id===id)||CATS[3];
+let S={welcomed:false,used:0,plan:null,hist:[]};
+try{Object.assign(S,JSON.parse(localStorage.getItem(LS)||"{}"))}catch(e){}
+if(!Array.isArray(S.hist))S.hist=[];
+const save=()=>{try{localStorage.setItem(LS,JSON.stringify(S))}catch(e){}};
+const planActive=()=>S.plan&&S.plan.exp>Date.now()?S.plan:null;
+const isPro=()=>{const p=planActive();return !!p&&(p.id==="pro"||p.id==="year")};
+const left=()=>Math.max(0,FREE-S.used);
+let cat="",img=null,audio=null,selPlan="basic",toastT=0,cur=null;
+
+function toast(m){const t=$("toast");t.textContent=m;t.style.display="block";clearTimeout(toastT);toastT=setTimeout(()=>t.style.display="none",2800)}
+function pill(){const p=planActive();let t;
+ if(p){const d=Math.ceil((p.exp-Date.now())/864e5);t="✅ "+PLANS.find(x=>x.id===p.id).n+" · متبقي "+d+" يوماً"}
+ else{const l=left();t=l===0?"انتهت فحوصاتك المجانية":l===1?"متبقي لك فحص مجاني واحد":l===2?"متبقي لك فحصان مجانيان":"متبقي لك "+l+" فحوصات مجانية"}
+ $("pill").textContent=t;$("lk").hidden=isPro()}
+function show(v){["home","result","hist","plans"].forEach(x=>$("v-"+x).hidden=x!==v);const tab=v==="result"?"home":v;
+ document.querySelectorAll(".nav button").forEach(b=>b.classList.toggle("on",b.dataset.t===tab));
+ if(v==="hist")drawHist();if(v==="plans")drawPlans();pill();window.scrollTo(0,0)}
+document.querySelectorAll(".nav button").forEach(b=>b.onclick=()=>show(b.dataset.t));
+
+// ---- الفئات ----
+$("cats").innerHTML=CATS.map(c=>`<button class="cat" data-c="${c.id}"><span>${c.i}</span>${c.n}</button>`).join("");
+document.querySelectorAll(".cat").forEach(b=>b.onclick=()=>{cat=b.dataset.c;document.querySelectorAll(".cat").forEach(x=>x.classList.toggle("on",x===b))});
+
+// ---- الصورة ----
+function readImg(f){if(!f)return;const u=URL.createObjectURL(f),im=new Image();
+ im.onload=()=>{const k=Math.min(1,1024/Math.max(im.width,im.height)),c=document.createElement("canvas");c.width=Math.round(im.width*k);c.height=Math.round(im.height*k);
+  c.getContext("2d").drawImage(im,0,0,c.width,c.height);const d=c.toDataURL("image/jpeg",.8);URL.revokeObjectURL(u);
+  img={mime:"image/jpeg",data:d.split(",")[1]};$("pimg").src=d;$("prev").hidden=false};
+ im.onerror=()=>{URL.revokeObjectURL(u);toast("تعذّر قراءة الصورة")};im.src=u}
+$("bCam").onclick=()=>$("fCam").click();$("bGal").onclick=()=>$("fGal").click();
+$("fCam").onchange=e=>{readImg(e.target.files[0]);e.target.value=""};$("fGal").onchange=e=>{readImg(e.target.files[0]);e.target.value=""};
+$("xImg").onclick=()=>{img=null;$("prev").hidden=true;$("pimg").removeAttribute("src")};
+
+// ---- الصوت ----
+let rec=null,chunks=[],stream=null,actx=null,raf=0,t0=0,tmr=0,audUrl="";
+const wav=async b=>{const c=new (window.AudioContext||window.webkitAudioContext)(),buf=await c.decodeAudioData(await b.arrayBuffer());c.close();
+ const s=buf.getChannelData(0),r=buf.sampleRate/16000,n=Math.floor(s.length/r),pcm=new Int16Array(n);
+ for(let i=0;i<n;i++)pcm[i]=Math.max(-1,Math.min(1,s[Math.floor(i*r)]))*32767;
+ const h=new DataView(new ArrayBuffer(44)),w=(o,t)=>[...t].forEach((ch,i)=>h.setUint8(o+i,ch.charCodeAt(0)));
+ w(0,"RIFF");h.setUint32(4,36+n*2,true);w(8,"WAVEfmt ");h.setUint32(16,16,true);h.setUint16(20,1,true);h.setUint16(22,1,true);h.setUint32(24,16000,true);h.setUint32(28,32000,true);h.setUint16(32,2,true);h.setUint16(34,16,true);w(36,"data");h.setUint32(40,n*2,true);
+ return new Blob([h,pcm],{type:"audio/wav"})};
+const b64=b=>new Promise((ok,no)=>{const r=new FileReader();r.onload=()=>ok(String(r.result).split(",")[1]);r.onerror=no;r.readAsDataURL(b)});
+function drawWave(an){const cv=$("wave"),g=cv.getContext("2d"),d=new Uint8Array(an.frequencyBinCount);
+ (function f(){raf=requestAnimationFrame(f);an.getByteFrequencyData(d);g.clearRect(0,0,cv.width,cv.height);g.fillStyle="#F97316";
+  const n=40,w=cv.width/n;for(let i=0;i<n;i++){const h=Math.max(4,d[i*2]/255*cv.height);g.fillRect(i*w+2,(cv.height-h)/2,w-4,h)}})()}
+async function startRec(){
+ if(!isPro()){toast("التسجيل الصوتي لمشتركي الباقة الاحترافية والسنوية");show("plans");return}
+ if(rec&&rec.state==="recording")return;
+ try{stream=await navigator.mediaDevices.getUserMedia({audio:true})}catch(e){toast("تعذّر الوصول إلى الميكروفون");return}
+ try{chunks=[];rec=new MediaRecorder(stream);rec.ondataavailable=e=>{if(e.data.size)chunks.push(e.data)};rec.onstop=onStop;rec.start();
+  actx=new (window.AudioContext||window.webkitAudioContext)();const an=actx.createAnalyser();an.fftSize=128;actx.createMediaStreamSource(stream).connect(an);drawWave(an);
+  t0=Date.now();$("recBox").hidden=false;$("audBox").hidden=true;
+  tmr=setInterval(()=>{const s=Math.floor((Date.now()-t0)/1000);$("rt").textContent=String(Math.floor(s/60)).padStart(2,"0")+":"+String(s%60).padStart(2,"0");if(s>=60)stopRec()},250)}
+ catch(e){toast("التسجيل غير مدعوم في هذا المتصفح");stream.getTracks().forEach(t=>t.stop())}}
+function stopRec(){clearInterval(tmr);cancelAnimationFrame(raf);if(rec&&rec.state==="recording")rec.stop();if(stream)stream.getTracks().forEach(t=>t.stop());if(actx)actx.close();$("recBox").hidden=true}
+async function onStop(){const blob=new Blob(chunks,{type:rec.mimeType||"audio/webm"});if(audUrl)URL.revokeObjectURL(audUrl);audUrl=URL.createObjectURL(blob);$("aud").src=audUrl;$("audBox").hidden=false;
+ try{audio={mime:"audio/wav",data:await b64(await wav(blob))}}catch(e){audio=null;toast("تعذّرت معالجة التسجيل، أعد المحاولة")}}
+$("bRec").onclick=startRec;$("stopRec").onclick=stopRec;
+$("xAud").onclick=()=>{audio=null;$("audBox").hidden=true;$("aud").removeAttribute("src")};
+
+// ---- الفحص ----
+async function check(){
+ const text=$("desc").value.trim();
+ if(!cat){toast("اختر نوع العطل أولاً");return}
+ if(!text&&!img&&!audio){toast("صف المشكلة أو أضف صورة أو تسجيلاً");return}
+ if(!planActive()&&left()<=0){toast("انتهت فحوصاتك المجانية، اختر باقة");show("plans");return}
+ $("go").disabled=true;$("loader").hidden=false;let i=0;$("lmsg").textContent=MSGS[0];const iv=setInterval(()=>{i=(i+1)%MSGS.length;$("lmsg").textContent=MSGS[i]},1800);
+ try{
+  const [res]=await Promise.all([diagnose({cat,catName:catOf(cat).n,text,image:img,audio}),sleep(2600)]);
+  const e={id:Date.now(),ts:Date.now(),cat,text:text.slice(0,140),res};
+  S.hist.unshift(e);S.hist=S.hist.slice(0,50);if(!planActive())S.used++;save();
+  showResult(e);
+ }catch(err){toast("حدث خطأ، حاول مرة أخرى")}
+ finally{clearInterval(iv);$("loader").hidden=true;$("go").disabled=false}
+}
+$("go").onclick=check;
+
+// ---- النتيجة ----
+const money=n=>fmt(n)+" أوقية جديدة <small>("+fmt(n*10)+" قديمة)</small>";
+const range=o=>o.min===o.max?money(o.min):fmt(o.min)+" – "+fmt(o.max)+" أوقية جديدة <small>("+fmt(o.min*10)+" – "+fmt(o.max*10)+" قديمة)</small>";
+function shareText(e){const r=e.res,c=catOf(e.cat);
+ return "🔧 تشخيص من تطبيق صيانتي – "+c.n+"\n\nالتشخيص: "+r.diagnosis+"\n\nالخطورة: "+r.danger_level+"\nقطع الغيار: "+r.parts_cost_mru.min+" – "+r.parts_cost_mru.max+" أوقية جديدة\nالأجرة: "+r.labor_cost_mru.min+" – "+r.labor_cost_mru.max+" أوقية جديدة\n\nما أقوله للفني: "+r.technician_phrase}
+function showResult(e){cur=e;const r=e.res,c=catOf(e.cat),tot={min:r.parts_cost_mru.min+r.labor_cost_mru.min,max:r.parts_cost_mru.max+r.labor_cost_mru.max};
+ $("v-result").innerHTML=
+ (r.simulated?'<div class="sim">⚠️ نتيجة تجريبية في وضع المحاكاة، وليست تحليلاً حقيقياً لحالتك. اربط مفتاح Gemini للتحليل الفعلي.</div>':"")+
+ `<div class="h"><h2 style="margin:0">${c.i} ${esc(c.n)}</h2><span class="badge b-${esc(r.danger_level)}">خطورة ${esc(r.danger_level)}</span></div>`+
+ (r.danger_level==="مرتفع"?'<div class="card" style="border-color:var(--bad)"><b>⚠️ يتطلب فنياً فوراً.</b> أوقف الاستعمال ولا تجرّب الإصلاح بنفسك.</div>':"")+
+ `<div class="card"><h3>🩺 التشخيص الدقيق</h3><div>${esc(r.diagnosis)}</div></div>`+
+ `<div class="card"><h3>🛠️ هل يمكنك إصلاحه بنفسك؟</h3>${r.diy_steps.length?"<ol>"+r.diy_steps.map(s=>"<li>"+esc(s)+"</li>").join("")+"</ol>":"<div>يُفضَّل استدعاء فني.</div>"}</div>`+
+ `<div class="card"><h3>💰 التكلفة العادلة في موريتانيا</h3><div class="money"><span>قطع الغيار</span><span>${range(r.parts_cost_mru)}</span></div><div class="money"><span>أجرة الفني</span><span>${range(r.labor_cost_mru)}</span></div><div class="money"><b>المجموع التقريبي</b><b>${range(tot)}</b></div><small style="color:var(--mut)">أرقام تقديرية وتختلف حسب المدينة والقطعة.</small></div>`+
+ `<div class="card"><h3>🗣️ ماذا تقول للفني؟</h3><div class="phrase" id="ph">${esc(r.technician_phrase)}</div><button class="btn sec s" id="cp" style="margin-top:8px">📋 نسخ النص</button></div>`+
+ (isPro()?`<div class="card" style="border-color:var(--org)"><h3>🛡️ الفحص العميق وتنبيهات الوقاية</h3><div>${esc(r.pro_advice)}</div></div>`
+  :`<div class="card lock"><h3>🛡️ الفحص العميق وتنبيهات الوقاية 🔒</h3><div class="blur">نصيحة احترافية حول جودة قطع الغيار الأفضل في السوق وكيف تمنع تكرار العطل مستقبلاً.</div><button class="btn s" id="up" style="margin-top:8px">افتحها بالباقة الاحترافية</button></div>`)+
+ `<button class="btn wa" id="sh">🟢 مشاركة النتيجة عبر واتساب</button><button class="btn sec big" id="nw">فحص جديد</button>`;
+ $("cp").onclick=()=>copy(r.technician_phrase);if($("up"))$("up").onclick=()=>show("plans");
+ $("sh").onclick=()=>window.open("https://wa.me/?text="+encodeURIComponent(shareText(e)),"_blank","noopener");
+ $("nw").onclick=()=>{cat="";document.querySelectorAll(".cat").forEach(x=>x.classList.remove("on"));$("desc").value="";$("xImg").onclick();$("xAud").onclick();show("home")};
+ show("result")}
+async function copy(t){try{await navigator.clipboard.writeText(t);toast("تم النسخ ✓")}catch(e){const a=document.createElement("textarea");a.value=t;document.body.appendChild(a);a.select();try{document.execCommand("copy");toast("تم النسخ ✓")}catch(_){toast("تعذّر النسخ")}a.remove()}}
+
+// ---- السجل ----
+function drawHist(){const v=$("v-hist");
+ if(!S.hist.length){v.innerHTML='<h2>🗂️ سجل الأعطال</h2><div class="card" style="text-align:center">لا توجد فحوصات بعد.<br>ابدأ أول فحص من الرئيسية.</div>';return}
+ v.innerHTML='<div class="h"><h2>🗂️ سجل الأعطال</h2><button class="btn sec s" id="clr">حذف السجل</button></div>'+S.hist.map(e=>{const c=catOf(e.cat);
+  return `<div class="card hi" data-id="${e.id}"><div class="h"><b>${c.i} ${esc(c.n)}</b><span class="badge b-${esc(e.res.danger_level)}">${esc(e.res.danger_level)}</span></div><p>${new Date(e.ts).toLocaleDateString("ar",{year:"numeric",month:"long",day:"numeric"})}</p><p>${esc(e.res.diagnosis.slice(0,90))}…</p><button class="btn sec s del" data-id="${e.id}">🗑️ حذف</button></div>`}).join("");
+ v.querySelectorAll(".hi").forEach(el=>el.onclick=ev=>{if(ev.target.classList.contains("del"))return;const e=S.hist.find(x=>String(x.id)===el.dataset.id);if(e)showResult(e)});
+ v.querySelectorAll(".del").forEach(b=>b.onclick=()=>{S.hist=S.hist.filter(x=>String(x.id)!==b.dataset.id);save();drawHist()});
+ $("clr").onclick=()=>{if(confirm("حذف كل السجل؟")){S.hist=[];save();drawHist()}}}
+
+// ---- الباقات ----
+function drawPlans(){const v=$("v-plans"),act=planActive(),sp=PLANS.find(x=>x.id===selPlan);
+ const card=x=>`<div class="card plan ${x.best?"best":""} ${x.id===selPlan?"sel":""}" data-p="${x.id}">${x.pop?'<span class="tag">'+x.pop+"</span>":""}
+  <div class="ph"><span class="ic">${x.ic}</span><div><h3>${x.n}</h3><small>${x.sub}</small></div></div>
+  <div class="price">${x.p} <small>أوقية جديدة (${fmt(x.p*10)} قديمة)</small></div><div class="per">${x.per}</div>
+  ${x.save?'<div class="save">💡 '+x.save+"</div>":""}
+  <ul class="ft">${FEATS.map((f,i)=>`<li class="${x.m[i]?"y":"n"}">${x.m[i]?"✓":"✕"} ${f}</li>`).join("")}</ul>
+  <button class="btn ${x.id===selPlan?"":"sec"} big" style="margin-top:0">${x.id===selPlan?"✔ تم اختيار هذه الباقة":"اشترك بـ "+x.p+" أوقية"}</button></div>`;
+ v.innerHTML=`<div class="hero"><h2>💎 اعرف السعر العادل قبل أن تدفع للفني</h2><p>باقات بأسعار رمزية، وتفعيل بالكود، بدون تسجيل وبدون أي بيانات شخصية.</p></div>`+
+ (act?`<div class="card" style="border-color:var(--ok)">✅ باقتك الحالية: <b>${esc(PLANS.find(x=>x.id===act.id).n)}</b> – تنتهي ${new Date(act.exp).toLocaleDateString("ar")}</div>`:`<div class="card">🎁 الباقة المجانية: متبقي لك <b>${left()}</b> من ${FREE} فحوصات للتجربة.</div>`)+
+ PLANS.filter(x=>x.p).map(card).join("")+
+ `<div class="card"><h3>كيف تشترك في دقيقة؟</h3><ol class="steps"><li>حوّل مبلغ الباقة من تطبيق البنك</li><li>أرسل وصل الدفع عبر واتساب</li><li>أدخل الكود الذي يصلك وابدأ فوراً</li></ol></div>
+ <div class="card" id="pay"><h3>💳 طرق الدفع والتفعيل الفوري</h3><div class="chips"><span>بنكيلي Bankily</span><span>مصرفي Masrvi</span><span>السداد Sedad</span><span>كليك Click</span><span>بيم بنك Bimbank</span></div>
+  <p style="margin:4px 0">الباقة المختارة: <b>${sp.n}</b><br>حوّل <b>${sp.p} أوقية جديدة</b> (${fmt(sp.p*10)} قديمة) إلى:</p><div class="num">${PAY_NUMBER}</div>
+  <button class="btn sec s" id="cpn" style="margin-top:8px">📋 نسخ الرقم</button>
+  <button class="btn wa" id="wa">🟢 أرسل وصل الدفع عبر واتساب لاستلام الكود</button>
+  <h3 style="margin-top:16px">🔑 كود التفعيل</h3><input class="code" id="code" maxlength="20" placeholder="أدخل الكود" autocomplete="off"><button class="btn big" id="act">تفعيل الباقة الآن</button><div id="perr" style="color:var(--bad);font-weight:700;margin-top:6px"></div></div>`;
+ v.querySelectorAll(".plan").forEach(el=>el.onclick=()=>{selPlan=el.dataset.p;drawPlans();const p=$("pay");if(p&&p.scrollIntoView)p.scrollIntoView({behavior:"smooth",block:"start"})});
+ $("cpn").onclick=()=>copy(PAY_NUMBER);
+ $("wa").onclick=()=>window.open("https://wa.me/"+WA_NUMBER+"?text="+encodeURIComponent("السلام عليكم، أريد تفعيل باقة «"+sp.n+"» بسعر "+sp.p+" أوقية جديدة ("+fmt(sp.p*10)+" قديمة). هذا وصل الدفع، أرجو إرسال كود التفعيل."),"_blank","noopener");
+ $("act").onclick=()=>{const c=$("code").value.trim().toUpperCase().replace(/[^A-Z0-9]/g,""),id=CODES[c];
+  if(!id){$("perr").textContent="الكود غير صحيح";return}
+  const pl=PLANS.find(x=>x.id===id);S.plan={id,exp:Date.now()+pl.days*864e5};save();toast("تم تفعيل باقة "+pl.n+" ✓");drawPlans();pill()}}
+
+// ---- البداية ----
+if(S.plan&&S.plan.exp<=Date.now()){S.plan=null;save();setTimeout(()=>toast("انتهت مدة باقتك، جدّدها من تبويب الباقات"),600)}
+if(!S.welcomed)$("welcome").hidden=false;
+$("start").onclick=()=>{S.welcomed=true;save();$("welcome").hidden=true};
+pill();
+if("serviceWorker" in navigator&&location.protocol==="https:")navigator.serviceWorker.register("sw.js").catch(()=>{});
+
+</script>
+</body>
+</html>

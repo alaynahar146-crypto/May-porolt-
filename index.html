@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="theme-color" content="#121C30" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="صلاح لي" />
+    <link rel="manifest" href="/manifest.webmanifest" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="icon" type="image/svg+xml" href="/icon.svg" />
+    <!--CANONICAL_LINK-->
+    <title>صلاح لي – مستشار الصيانة الذكي في موريتانيا</title>
+    <meta name="description" content="افحص أعطال المكيفات والسيارات والكهرباء والهواتف والأجهزة المنزلية بالصورة أو الصوت، واحصل على التشخيص والسعر العادل في موريتانيا." />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="ar_MR" />
+    <meta property="og:site_name" content="صلاح لي" />
+    <meta property="og:url" content="/" />
+    <meta property="og:title" content="صلاح لي – مستشار الصيانة الذكي في موريتانيا" />
+    <meta property="og:description" content="افحص أعطال المكيفات والسيارات والكهرباء والهواتف والأجهزة المنزلية بالصورة أو الصوت، واحصل على التشخيص والسعر العادل في موريتانيا." />
+    <meta property="og:image" content="/og-share.png" />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="تطبيق صلاح لي لفحص الأعطال وتقدير تكلفة الصيانة في موريتانيا" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="صلاح لي – مستشار الصيانة الذكي في موريتانيا" />
+    <meta name="twitter:description" content="افحص أعطال المكيفات والسيارات والكهرباء والهواتف والأجهزة المنزلية بالصورة أو الصوت، واحصل على التشخيص والسعر العادل في موريتانيا." />
+    <meta name="twitter:image" content="/og-share.png" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "صلاح لي",
+        "alternateName": "Sallahli",
+        "applicationCategory": "UtilitiesApplication",
+        "operatingSystem": "All",
+        "inLanguage": "ar",
+        "description": "افحص أعطال المكيفات والسيارات والكهرباء والهواتف والأجهزة المنزلية بالصورة أو الصوت، واحصل على التشخيص والسعر العادل في موريتانيا.",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "MRU"
+        }
+      }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&family=IBM+Plex+Mono:wght@500;600;700&display=swap" rel="stylesheet" />
+    <script>
+      (function () {
+        try {
+          window.addEventListener('beforeinstallprompt', function (e) {
+            e.preventDefault();
+            window.__sallahliDeferredPrompt = e;
+          });
+          var saved = localStorage.getItem('siyanti_theme');
+          var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+          if (saved === 'dark' || (!saved && prefersDark)) {
+            document.documentElement.classList.add('dark');
+          }
+        } catch (e) {}
+      })();
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
+
